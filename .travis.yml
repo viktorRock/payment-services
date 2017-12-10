@@ -3,33 +3,19 @@ language: node_js
 cache:
   directories:
   - "$HOME/google-cloud-sdk/"
-env: 
 before_install:
-# - openssl aes-256-cbc -K $encrypted_32e8b768a5e8_key -iv $encrypted_32e8b768a5e8_iv
-  # -in credentials.tar.gz.enc -out credentials.tar.gz -d
-# - if [ ! -d ${HOME}/google-cloud-sdk ]; then curl https://sdk.cloud.google.com | bash;
-#   fi
 - gcloud version || true
 - if [ ! -d "$HOME/google-cloud-sdk/bin" ]; then rm -rf $HOME/google-cloud-sdk; export CLOUDSDK_CORE_DISABLE_PROMPTS=1; curl https://sdk.cloud.google.com | bash; fi
 # Add gcloud to $PATH
 - source /home/travis/google-cloud-sdk/path.bash.inc
 - gcloud version
-# - tar -xzf credentials.tar.gz
-# - mkdir -p lib
-# - gcloud auth activate-service-account --key-file client-secret.json
-- ssh-keygen -q -N "" -f ~/.ssh/google_compute_engine
-- gcloud -q app deploy
 install:
-- gcloud config set project payment-services
 - npm install
-script:
-- gcloud -q preview app deploy app.yaml --promote
-# - npm test
 deploy:
   provider: gcs
   access_key_id: payment-services
   secret_access_key:
-    secure: zxZZ4CeuE7yM0npNbR99QYfbC2pjvWdrqybmcpvnl7CR7m3o1YyykQHjKR/Gs51F8nTh5S23F9E7g5IXM4mOHagfxvJ23toH0UFeyQLvmjSnu7cX8p9KnVt8zx3iuyT6Je0qyDK8vEdcFAYjn35anxPTQSWjkyYSD8tDMubwAFgLlqf+hDe3reFfXlO1lDaU3KitPOk9Foi2KmN9JTVZkPRnM4H04hBgVjLXlnnmbsBiqwrBgFENKB97VNEjLqiPzG6lbLH0LZ9TDYEQSPOK0ufEcd92GCAh4jN9f9yx1kf55oS184otOv5SSgHJb6mC9Bqa0BbZY/zjllh7oiDdSoDlQUnDn9bOK9LkffCTlpkyQLSV1zU0s1l+TMR/nPu9cRmyIZKFLxI+fSvK7Pmkgnrd+WTloOX2ILDeNbO2Q8R0PDMOav6K2PlkL06m1j8nmrrohWd1dkYBLEME+NI+IPyYsA+pnRNzkAw4yORgFfBCxdXyr8ic4iWK4Btc5j66laLEO2nOSp4YvxBAOm7t3MPpoc/jDojf+ryogp/W6zY7lEUv28s7AqT8tglijAdTxbUkRx30T4id8UZg+oooafzHN28G4eTmjEy4eH5xsrRGgfWrnU7JKgybTg311IT0rLEJf8gHIEvGUc3oFY45LG6RBGVHlJAuRMfcSGa2RKU=
+    secure: mdjI7ctkvNGj+l7Vh/Z9Bn4K4dNoZ9V8Ff0cwZ0IT0hosgWD8CjFwyeBUHCqiQHapmYscFT6Vd1HvfOJGd6nT4uQiFT9ZPza6MnID6wVbUIxcsA1W1x7fHmGaqdGZDteHEOWbceG/9dV0m+rU38cubDM0hLg/9vqsBlrZL7dHIg8UYOUdIS6sOD5Iu5StXIFacYx3YPradO25MMmhRBWRc3FRIqnK2shO9CwfRQbNCiHBkq6twvHgg9wPiQnu3THZ4q8S+7kAWETQ2ALQ6drcHq6Mb10mDMXl2vA3qLPL24ucVgse/oAqfcMwa8+gExPBIgiM1aWGY+lOjGItQQiPmGcAe1BrllfJnpcpAOrwNlfufrsU8XOZPpafcfyeGcwNF6AAS4Y2JfSsg4qQceezgiQ66OHC9xzyjCcd75sFRDlZos20tWGgxoPsP4Lju2/CWWo9xxHZDK4Uf1pcyJTqkCmw0Ul5Ub45Ut2MHLuGIbsrfbkWUOzVLSWh1bLqAEOMq/tyVCvhdUM8Anddqb6lIF4TJn2+KFQwIu+Q+fy8ADYwGq5VdL+DFEItaB7m1EFF9zKQLBY58koGKmJK+wKL3324itA09kQURB0A8W2ocHg46HIxmPFBStHgKR0TZh9qaRoaykJYX4KiovtZ9YhAdAwyIpQBllSfF+Q4OUztXo=
   bucket: gs://staging.payment-services.appspot.com/
   on:
     repo: viktorRock/payment-services
