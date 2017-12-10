@@ -1,2 +1,3 @@
-# payment-services
-endpoints for payment services
+# Payment Services
+
+Payment endpoints for webapps
