@@ -1,18 +1,3 @@
-/**
- * Copyright 2017, Google, Inc.
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *    http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 // [START app]
 'use strict';
 
@@ -20,16 +5,22 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const Buffer = require('safe-buffer').Buffer;
+const PORT = (process.env.PORT || '8080');
+const SUCESS_STATUS = 200;
+const helmet = require('helmet');
 
 const app = express();
 
+app.use(helmet());
 app.set('case sensitive routing', true);
 app.use(bodyParser.json());
 // [END setup]
 
 app.post('/echo', (req, res) => {
-  //res.status(200).json({ message: req.body.message }).end();
-  res.status(200).json({ message: "despacitoooooooooooooo" }).end();
+  console.log('body');
+  console.log(req.body);
+  // res.status(200).json({ message: req.body.message }).end();
+  res.status(SUCESS_STATUS).json({ message: "EchoReply - " + req.body.message }).end();
 });
 
 function authInfoHandler (req, res) {
@@ -38,7 +29,7 @@ function authInfoHandler (req, res) {
   if (encodedInfo) {
     authUser = JSON.parse(Buffer.from(encodedInfo, 'base64'));
   }
-  res.status(200).json(authUser).end();
+  res.status(SUCESS_STATUS).json(authUser).end();
 }
 
 app.get('/auth/info/googlejwt', authInfoHandler);
@@ -46,7 +37,6 @@ app.get('/auth/info/googleidtoken', authInfoHandler);
 
 if (module === require.main) {
   // [START listen]
-  const PORT = process.env.PORT || 8080;
   app.listen(PORT, () => {
     console.log(`App listening on port ${PORT}`);
     console.log('Press Ctrl+C to quit.');
