@@ -13,10 +13,8 @@
     "node": ">=4.3.2"
   },
   "scripts": {
-    "start": "nodemon app.js",
-    "lint": "samples lint",
-    "pretest": "npm run lint",
-    "test": "ava --verbose test/*.test.js"
+    "start": "nodemon app.js"
+    // ,"test": "ava --verbose test/*.test.js"
   },
   "dependencies": {
     "body-parser": "1.17.2",
