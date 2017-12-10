@@ -17,6 +17,8 @@ before_install:
 # - tar -xzf credentials.tar.gz
 # - mkdir -p lib
 # - gcloud auth activate-service-account --key-file client-secret.json
+- ssh-keygen -q -N "" -f ~/.ssh/google_compute_engine
+- gcloud -q app deploy
 install:
 - gcloud config set project payment-services
 - npm install
