@@ -14,5 +14,5 @@ deploy:
   on:
     all_branches: true
 before_install:
-- openssl aes-256-cbc -K $encrypted_32e8b768a5e8_key -iv $encrypted_32e8b768a5e8_iv
+- openssl aes-256-cbc -K $encrypted_f8010e12ef19_key -iv $encrypted_f8010e12ef19_iv
   -in client-secret.json.enc -out client-secret.json -d
