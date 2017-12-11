@@ -4,18 +4,13 @@ cache:
   directories:
   - "$HOME/google-cloud-sdk/"
 before_install:
-- gcloud version || true
-- if [ ! -d "$HOME/google-cloud-sdk/bin" ]; then rm -rf $HOME/google-cloud-sdk; export CLOUDSDK_CORE_DISABLE_PROMPTS=1; curl https://sdk.cloud.google.com | bash; fi
-# Add gcloud to $PATH
-- source /home/travis/google-cloud-sdk/path.bash.inc
-- gcloud version
+- openssl aes-256-cbc -K $encrypted_32e8b768a5e8_key -iv $encrypted_32e8b768a5e8_iv
+  -in client-secret.json.enc -out client-secret.json -d
 install:
 - npm install
 deploy:
-  provider: gcs
-  access_key_id: payment-services
-  secret_access_key:
-    secure: mdjI7ctkvNGj+l7Vh/Z9Bn4K4dNoZ9V8Ff0cwZ0IT0hosgWD8CjFwyeBUHCqiQHapmYscFT6Vd1HvfOJGd6nT4uQiFT9ZPza6MnID6wVbUIxcsA1W1x7fHmGaqdGZDteHEOWbceG/9dV0m+rU38cubDM0hLg/9vqsBlrZL7dHIg8UYOUdIS6sOD5Iu5StXIFacYx3YPradO25MMmhRBWRc3FRIqnK2shO9CwfRQbNCiHBkq6twvHgg9wPiQnu3THZ4q8S+7kAWETQ2ALQ6drcHq6Mb10mDMXl2vA3qLPL24ucVgse/oAqfcMwa8+gExPBIgiM1aWGY+lOjGItQQiPmGcAe1BrllfJnpcpAOrwNlfufrsU8XOZPpafcfyeGcwNF6AAS4Y2JfSsg4qQceezgiQ66OHC9xzyjCcd75sFRDlZos20tWGgxoPsP4Lju2/CWWo9xxHZDK4Uf1pcyJTqkCmw0Ul5Ub45Ut2MHLuGIbsrfbkWUOzVLSWh1bLqAEOMq/tyVCvhdUM8Anddqb6lIF4TJn2+KFQwIu+Q+fy8ADYwGq5VdL+DFEItaB7m1EFF9zKQLBY58koGKmJK+wKL3324itA09kQURB0A8W2ocHg46HIxmPFBStHgKR0TZh9qaRoaykJYX4KiovtZ9YhAdAwyIpQBllSfF+Q4OUztXo=
-  bucket: gs://staging.payment-services.appspot.com/
-  on:
-    repo: viktorRock/payment-services
+  provider: gae
+  project: payment-services
+  keyfile: client-secret.json
+  skip_cleanup: true
+  default: true
