@@ -11,6 +11,7 @@ deploy:
   keyfile: client-secret.json
   skip_cleanup: true
   default: true
+  config: ./app.yaml
   on:
     all_branches: true
 before_install:
