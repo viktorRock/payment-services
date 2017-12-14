@@ -12,6 +12,7 @@ deploy:
   skip_cleanup: true
   default: true
   verbosity : debug
+  script : travis_wait gcloud preview app deploy
   on:
     all_branches: true
 before_install:
