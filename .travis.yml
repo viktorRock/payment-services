@@ -5,6 +5,7 @@ cache:
   - "$HOME/google-cloud-sdk/"
 install:
 - npm install
+- gcloud -q app deploy
 deploy:
   provider: gae
   project: payment-services
