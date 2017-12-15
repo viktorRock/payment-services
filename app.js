@@ -20,7 +20,7 @@ app.post('/echo', (req, res) => {
   console.log('body');
   console.log(req.body);
   // res.status(200).json({ message: req.body.message }).end();
-  res.status(SUCESS_STATUS).json({ message: " EchoReply7 - " + req.body.message }).end();
+  res.status(SUCESS_STATUS).json({ message: " EchoReply - " + req.body.message }).end();
 });
 
 function authInfoHandler (req, res) {
