@@ -1,4 +1,6 @@
 sudo: required
+services:  
+  - docker
 language: node_js
 cache:
   directories:
@@ -12,6 +14,7 @@ deploy:
   skip_cleanup: true
   default: true
   verbosity : debug
+  on: master
 before_install:
 - openssl aes-256-cbc -K $encrypted_f8010e12ef19_key -iv $encrypted_f8010e12ef19_iv
   -in client-secret.json.enc -out client-secret.json -d
