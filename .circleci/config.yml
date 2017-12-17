@@ -3,6 +3,17 @@
 # Check https://circleci.com/docs/2.0/language-javascript/ for more details
 #
 version: 2
+dependencies:
+  pre:
+    # Retrieve our secrets from the CircleCI environment
+    - echo $GCLOUD_SERVICE_KEY | base64 --decode --ignore-garbage > ${HOME}/gcloud-service-key.json
+    # - sed  s/YOUR-API-KEY/$API_KEY/ api_key.py.sample > api_key.py
+    # Make sure gcloud is up to date
+    - gcloud --quiet components update app
+    # authenticate gcloud
+    - gcloud auth activate-service-account --key-file ${HOME}/gcloud-service-key.json
+    # Replace <your-project-id>
+    - gcloud config set project $GCLOUD_PROJECT
 jobs:
   build-job:
     docker:
@@ -38,6 +49,11 @@ jobs:
 
       # run
   deploy-job:
+     staging:
+        branch: master
+        commands:
+        # deploy to AppEngine
+        - gcloud -q app deploy app.yaml --promote --version=1
      # docker:
      #   - image: my-image
      # working_directory: /tmp/my-project  
