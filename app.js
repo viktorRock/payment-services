@@ -7,11 +7,9 @@ const bodyParser = require('body-parser');
 const Buffer = require('safe-buffer').Buffer;
 const PORT = (process.env.PORT || '8080');
 const SUCESS_STATUS = 200;
-const helmet = require('helmet');
 
 const app = express();
 
-app.use(helmet());
 app.set('case sensitive routing', true);
 app.use(bodyParser.json());
 // [END setup]
