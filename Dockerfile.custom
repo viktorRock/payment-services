@@ -3,17 +3,20 @@
 # This image is based on Debian Jessie and includes nodejs and npm
 # installed from nodejs.org. The source is located in
 # https://github.com/GoogleCloudPlatform/nodejs-docker
-CMD ["echo docker start !!!"]
-CMD ["pwd"]
 
 FROM gcr.io/google_appengine/nodejs
-
+CMD ["echo docker start !!!"]
 CMD ["pwd"]
 
 ADD . /app
 WORKDIR /app
+CMD ["pwd"]
 
+CMD ["echo Installing Node"]
 RUN npm install
+
 ENV PORT=8080
+
+CMD ["echo npm start !!!!"]
 ENTRYPOINT ["npm", "start"]
 
