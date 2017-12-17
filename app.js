@@ -4,6 +4,7 @@
 // [START setup]
 const express = require('express');
 const bodyParser = require('body-parser');
+const pagSeguro = require('./lib/pagSeg');
 const Buffer = require('safe-buffer').Buffer;
 const PORT = (process.env.PORT || '8080');
 const SUCESS_STATUS = 200;
@@ -14,6 +15,12 @@ app.set('case sensitive routing', true);
 app.use(bodyParser.json());
 // [END setup]
 
+app.post('/uolcheckout', (req, res) => {
+  return pagSeguro.getPagSeg(req.body).then((pagSeg) => {
+    console.log(pagSeg);
+    res.status(SUCESS_STATUS).json(pagSeg).end();
+  });
+});
 app.post('/echo', (req, res) => {
   console.log('body');
   console.log(req.body);

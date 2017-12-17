@@ -5,20 +5,15 @@
 # https://github.com/GoogleCloudPlatform/nodejs-docker
 
 FROM gcr.io/google_appengine/nodejs
-CMD ["echo Project : $PROJECT_ID"]
-CMD ["echo Repository: $REPO_NAME"]
-CMD ["echo Build : $BUILD_ID"]
-CMD ["pwd"]
 
 ADD . /app
 WORKDIR /app
-CMD ["pwd"]
+
 
 CMD ["echo Installing Node"]
 RUN npm install
 
 ENV PORT=8080
 
-CMD ["echo npm start !!!!"]
 ENTRYPOINT ["npm", "start"]
 
