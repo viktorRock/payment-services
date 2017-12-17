@@ -5,7 +5,9 @@
 # https://github.com/GoogleCloudPlatform/nodejs-docker
 
 FROM gcr.io/google_appengine/nodejs
-CMD ["echo docker start !!!"]
+CMD ["echo Project : $PROJECT_ID"]
+CMD ["echo Repository: $REPO_NAME"]
+CMD ["echo Build : $BUILD_ID"]
 CMD ["pwd"]
 
 ADD . /app
