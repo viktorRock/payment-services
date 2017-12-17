@@ -38,9 +38,9 @@ jobs:
 
       # run
   deploy-job:
-     docker:
-       - image: my-image
-     working_directory: /tmp/my-project  
+     # docker:
+     #   - image: my-image
+     # working_directory: /tmp/my-project  
      steps:
        - run:
            name: Deploy Master to GKE
