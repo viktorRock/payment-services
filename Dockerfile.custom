@@ -17,8 +17,6 @@ ENTRYPOINT ["npm", "start"]
 
 
 CMD \
-	echo "Deployment" \
-	&& \
 	gcloud app deploy --version $BRANCH --project $PROJECT	
  
 
