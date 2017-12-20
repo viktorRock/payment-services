@@ -46,7 +46,7 @@ paths:
       parameters:
       - description: "checkout input"
         in: body
-        name: checkout
+        name: checkoutin
         required: true
         schema:
           $ref: "#/definitions/checkoutin"
@@ -93,6 +93,24 @@ definitions:
         type: "string"
       date:
         type: "string"
+  checkoutin:
+    properties:
+      currency: 
+        type: "string"
+      items:
+        type: "object"
+        properties:
+          item:
+            type: "object"
+            properties:
+              id:
+                type: "string"
+              description:
+                type: "string"
+              amount: 
+                type: "string"
+              quantity:
+                type: "integer"
 # This section requires all requests to any path to require an API key.
 security:
 - api_key: []
@@ -128,4 +146,3 @@ securityDefinitions:
     # Your OAuth2 client's Client ID must be added here. You can add
     # multiple client IDs to accept tokens from multiple clients.
     x-google-audiences: "YOUR-CLIENT-ID"
-

@@ -5,4 +5,4 @@ endpoints_api_service:
   # The following values are to be replaced by information from the output of
   # 'gcloud service-management deploy openapi.yaml' command.
   name: echo-api.endpoints.payment-services.cloud.goog
-  config_id: 2017-12-09r1
+  config_id: 2017-12-20r1
