@@ -17,6 +17,6 @@ ENV PORT=8080
 
 
 CMD \
-	gcloud app deploy --version $BRANCH --project $PROJECT	
+	gcloud app deploy  --project $PROJECT	
  
 

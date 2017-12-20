@@ -1,5 +1,5 @@
 steps:
 - name: 'gcr.io/cloud-builders/docker'
-  args: [ 'build', '-t', 'gcr.io/Checkout/cb-demo-img', '.' ]
+  args: [ 'build', '-t', 'gcr.io/checkout/cb-demo-img', '.' ]
 images:
 - 'gcr.io/payment-services/gitimage'
