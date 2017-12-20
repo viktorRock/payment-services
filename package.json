@@ -20,6 +20,7 @@
     "express": "4.15.4",
     "jxon": "^2.0.0-beta.5",
     "nodemon": "^1.12.1",
+    "request": "^2.83.0",
     "request-promise": "^4.2.2",
     "safe-buffer": "5.1.1"
   },
