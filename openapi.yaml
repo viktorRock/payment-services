@@ -32,6 +32,24 @@ paths:
         required: true
         schema:
           $ref: "#/definitions/echoMessage"
+  "/uolcheckout":
+    post:
+      description: "get a checkout code from pagseguro payment services"
+      operationId: "uolcheckout"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "pageseguro checkout code"
+          schema:
+            $ref: "#/definitions/uolcheckout"
+      parameters:
+      - description: "Message to echo"
+        in: body
+        name: Checkout
+        required: true
+        schema:
+          $ref: "#/definitions/uolcheckout/checkout"
   "/auth/info/googlejwt":
     get:
       description: "Returns the requests' authentication information."
