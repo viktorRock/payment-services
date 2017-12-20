@@ -2,7 +2,7 @@
 swagger: "2.0"
 info:
   description: "A simple Google Cloud Endpoints API example."
-  title: "Endpoints Example"
+  title: "Payment Endpoints"
   version: "1.0.0"
 host: "echo-api.endpoints.payment-services.cloud.goog"
 # [END swagger]
@@ -42,14 +42,14 @@ paths:
         200:
           description: "pageseguro checkout code"
           schema:
-            $ref: "#/definitions/uolcheckout"
+            $ref: "#/definitions/checkout"
       parameters:
-      - description: "Message to echo"
+      - description: "checkout input"
         in: body
-        name: Checkout
+        name: checkout
         required: true
         schema:
-          $ref: "#/definitions/uolcheckout/checkout"
+          $ref: "#/definitions/checkoutin"
   "/auth/info/googlejwt":
     get:
       description: "Returns the requests' authentication information."
@@ -86,6 +86,12 @@ definitions:
       id:
         type: "string"
       email:
+        type: "string"
+  checkout:
+    properties:
+      code: 
+        type: "string"
+      date:
         type: "string"
 # This section requires all requests to any path to require an API key.
 security:
