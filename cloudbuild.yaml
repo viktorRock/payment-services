@@ -2,4 +2,4 @@ steps:
 - name: 'gcr.io/cloud-builders/docker'
   args: [ 'build', '-t', 'gcr.io/checkout/cb-demo-img', '.' ]
 images:
-- 'gcr.io/payment-services/gitimage'
+- 'us.gcr.io/payment-services/appengine:prod'
