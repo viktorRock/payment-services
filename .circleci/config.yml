@@ -49,18 +49,13 @@ jobs:
 
       # run
   deploy-job:
-     staging:
-        branch: master
-        commands:
-        # deploy to AppEngine
-        - gcloud -q app deploy app.yaml --promote --version=1
-     # docker:
-     #   - image: my-image
-     # working_directory: /tmp/my-project  
-     steps:
-       - run:
-           name: Deploy Master to GKE
-           command: ./deploy.sh
+    docker:
+      - image: my-image
+    working_directory: /tmp/my-project  
+    steps:
+      - run:
+        name: Deploy Master to GKE
+        command: ./deploy.sh
 workflows:
   version: 2
   build-deploy:
