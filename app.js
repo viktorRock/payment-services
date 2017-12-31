@@ -24,7 +24,7 @@ app.post('/uolcheckout', (req, res) => {
 app.post('/echo', (req, res) => {
   console.log(req.body);
   // res.status(200).json({ message: req.body.message }).end();
-  res.status(SUCESS_STATUS).json({ message: " Reply2 - " + req.body.message }).end();
+  res.status(SUCESS_STATUS).json({ message: " Reply3 - " + req.body.message }).end();
 });
 
 function authInfoHandler (req, res) {
