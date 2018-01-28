@@ -19,7 +19,7 @@ Payment endpoints for webapps
             * test enviroment - ```"https://ws.sandbox.pagseguro.uol.com.br/v2/checkout"```
         1. PAGSEG_CLIENT_TOKEN - API token you received from PagSeguro
         1. PAGSEG_CLIENT_EMAIL - Your e-mail from the PagSegure Sign Up
-        1. name and config_id: - You get it after in the [Google tutorial](https://cloud.google.com/endpoints/docs/deploy-an-api) after running ```gcloud service-management deploy openapi.yaml```
+        1. name and config_id: - You get it during [Google tutorial](https://cloud.google.com/endpoints/docs/deploy-an-api) after running ```gcloud service-management deploy openapi.yaml```
         * Example
         ```
             runtime: nodejs
@@ -37,4 +37,15 @@ Payment endpoints for webapps
         ```
 
   
-1. Deploying on Google Cloud Endpoints - [Tutorial](https://cloud.google.com/endpoints/docs/deploy-an-api)
+1. Deploying on Google Cloud Endpoints - [Tutorial](https://cloud.google.com/endpoints/docs/quickstart-app-engine#node)
+
+## How to test it ?
+1. Install curl
+1. Set environment variables
+   * ENDPOINTS_HOST -  Where your Endpoint were deployed on [Tutorial](https://cloud.google.com/endpoints/docs/quickstart-app-engine#node)
+   * ENDPOINTS_KEY -  The Endpoint key created during [Tutorial](https://cloud.google.com/endpoints/docs/quickstart-app-engine#node)
+1. Run the following command 
+   1. Windows
+      * ``` curl -vv -H "Content-Type: application/json" -d "@data.json"  "%ENDPOINTS_HOST%/uolcheckout?key=%ENDPOINTS_KEY%"  ```
+   1. Linux
+      * ``` curl -vv -L -d '@data.json' -H 'Content-Type: application/json' "${ENDPOINTS_HOST}/uolcheckout?key=${ENDPOINTS_KEY}" ```
