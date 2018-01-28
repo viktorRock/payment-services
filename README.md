@@ -1,6 +1,6 @@
 # Payment Services
 
-Payment endpoints for webapps
+Payment services (PagSeguro) in the Google Cloud with NodeJS
 
 ## Pre requisites
 1. A PagSeguro Account
