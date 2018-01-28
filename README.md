@@ -36,4 +36,5 @@ Payment endpoints for webapps
                 PAGSEG_URL: 'https://ws.pagseguro.uol.com.br/v2/checkout'
         ```
 
-    1. Deploying on Google Cloud Endpoints - [Tutorial](https://cloud.google.com/endpoints/docs/deploy-an-api)
+  
+1. Deploying on Google Cloud Endpoints - [Tutorial](https://cloud.google.com/endpoints/docs/deploy-an-api)
