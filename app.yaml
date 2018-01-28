@@ -5,9 +5,9 @@ endpoints_api_service:
   # The following values are to be replaced by information from the output of
   # 'gcloud service-management deploy openapi.yaml' command.
   name: echo-api.endpoints.payment-services.cloud.goog
-  config_id: 2017-12-31r0
+  config_id: 2018-NN-DDxx
 
 env_variables:
-  PAGSEG_CLIENT_EMAIL: 'pvmathiassilva@gmail.com'
-  PAGSEG_CLIENT_TOKEN: 'E0170E27CBBB495FA1F5FB1F64902066'
+  PAGSEG_CLIENT_EMAIL: 'XXXXXXXXXXXXXXa@gmail.com'
+  PAGSEG_CLIENT_TOKEN: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
   PAGSEG_URL: 'https://ws.pagseguro.uol.com.br/v2/checkout'
